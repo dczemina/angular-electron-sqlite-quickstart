@@ -1,12 +1,18 @@
 {
   "name": "angular-electron-sqlite-quickstart",
+  "author": {
+    "name": "David Zemina",
+    "email": "dczemina@gmail.com",
+    "url": "https://www.david-zemina.com"
+  },
   "version": "0.0.0",
+  "main": "electron.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "dev": "concurrently \"npm run start\" \"npm run electron\"",
+    "electron": "wait-on http://localhost:4200 && npx electron . dev",
+    "prod": "ng build --configuration production && electron-builder"
   },
   "private": true,
   "dependencies": {
@@ -18,7 +24,9 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "electron-log": "^4.4.8",
     "rxjs": "~7.8.0",
+    "sqlite3": "^5.1.6",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
@@ -27,12 +35,16 @@
     "@angular/cli": "~16.1.6",
     "@angular/compiler-cli": "^16.1.0",
     "@types/jasmine": "~4.3.0",
+    "concurrently": "^8.2.0",
+    "electron": "^25.3.2",
+    "electron-builder": "^24.6.3",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.1.3"
+    "typescript": "~5.1.3",
+    "wait-on": "^7.0.1"
   }
 }

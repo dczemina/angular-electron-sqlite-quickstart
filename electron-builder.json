@@ -1,0 +1,31 @@
+ 
+{
+    "appId": "zemina.angular-electron-sqlite-quickstart",
+    "productName": "Angular Electron SQLite Quickstart",
+    "directories": {
+        "output": "dist"
+    },
+    "extends": null,
+    "files": [
+        "electron.js",
+        "preloader.js",
+        "dist/angular-electron-sqlite-quickstart",
+        "package.json",
+        "db-api.js"
+    ],
+    "extraFiles": [
+        {
+          "from": "resources/data.db",
+          "to": "resources/data.db"
+        }
+    ],
+    "win": {
+        "target": "nsis"
+    },
+    "mac": {
+        "target": "dmg"
+    },
+    "linux": {
+        "target": "AppImage"
+    }
+}
